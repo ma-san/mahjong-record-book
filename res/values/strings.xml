@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">麻雀記録帳</string>
+    <string name="player_name">氏名</string>
+    <string name="play_number">回数</string>
+    <string name="difference">差</string>
+    <string name="total">合計</string>
+    <string name="amount">結果</string>
+    <string name="plus">＋</string>
+	<string name="minus">ー</string>
+    <string name="point">点</string>
+	<string name="record_clear">点数を初期化</string>
+    <string name="all_clear">すべて初期化</string>
+    
+</resources>
