@@ -24,7 +24,7 @@ public class RecordLayout extends ScrollView {
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		((Activity)getContext()).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 
-		// TODO ƒXƒe[ƒ^ƒXƒo[‚‚³‚ğonWindow‘O‚É‚Æ‚è‚½‚¢
+		// TODO ï¿½Xï¿½eï¿½[ï¿½^ï¿½Xï¿½oï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½onWindowï¿½Oï¿½É‚Æ‚è‚½ï¿½ï¿½
 //		Rect rect = new Rect();
 //		Window window = ((Activity)getContext()).getWindow();
 //		window.getDecorView().getWindowVisibleDisplayFrame(rect);
