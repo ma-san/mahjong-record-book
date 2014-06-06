@@ -13,6 +13,15 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
 
+	/** 名前レイアウト */
+	private NameLayout nameLayout;
+	/** 記録レイアウト */
+	private RecordLayout recordLayout;
+	/** 合計レイアウト */
+	private TotalLayout totalLayout;
+	/** 額レイアウト */
+	private AmountLayout amountLayout;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,23 +33,59 @@ public class MainActivity extends Activity {
 		mainLayout.setOrientation(LinearLayout.VERTICAL);
 		setContentView(mainLayout);
 		
-		NameLayout nameLayout = new NameLayout(this);
+		nameLayout = new NameLayout(this);
 		mainLayout.addView(nameLayout, LayoutParamsUtil.createHeigthWeightParams(1));
 
 		SymbolLayout symbolLayout = new SymbolLayout(this);
 		mainLayout.addView(symbolLayout, LayoutParamsUtil.createHeigthWeightParams(1));
 
-		RecordLayout recordLayout = new RecordLayout(this);
+		recordLayout = new RecordLayout(this);
 		mainLayout.addView(recordLayout, LayoutParamsUtil.createHeigthWeightParams(3));
 		
-		TotalLayout totalLayout = new TotalLayout(this);
+		totalLayout = new TotalLayout(this);
 		mainLayout.addView(totalLayout, LayoutParamsUtil.createHeigthWeightParams(1));
 
-		AmountLayout amountLayout = new AmountLayout(this);
+		amountLayout = new AmountLayout(this);
 		mainLayout.addView(amountLayout, LayoutParamsUtil.createHeigthWeightParams(1));
 
 		OptionLayout optionLayout = new OptionLayout(this);
 		mainLayout.addView(optionLayout, LayoutParamsUtil.createHeigthWeightParams(1));
+	}
+
+	/**
+	 * 名前レイアウトを取得する。
+	 * 
+	 * @return 名前レイアウト
+	 */
+	public NameLayout getNameLayout() {
+		return nameLayout;
+	}
+	
+	/**
+	 * 記録レイアウトを取得する。
+	 * 
+	 * @return 記録レイアウト
+	 */
+	public RecordLayout getRecordLayout() {
+		return recordLayout;
+	}
+	
+	/**
+	 * 合計レイアウトを取得する。
+	 * 
+	 * @return 合計レイアウト
+	 */
+	public TotalLayout getTotalLayout() {
+		return totalLayout;
+	}
+
+	/**
+	 * 額レイアウトを取得する。
+	 * 
+	 * @return 額レイアウト
+	 */
+	public AmountLayout getAmountLayout() {
+		return amountLayout;
 	}
 
 }
