@@ -1,4 +1,4 @@
-package jp.co.headwaters.mrb.layout;
+﻿package jp.co.headwaters.mrb.layout;
 
 import jp.co.headwaters.mrb.constant.Constant;
 import jp.co.headwaters.mrb.util.LayoutParamsUtil;
@@ -16,6 +16,10 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
     private CEditText[] plus;
     private CEditText[] minus;
     private CTextView difference;
+    
+
+//    private int result = 0;
+//    private int position = 0;
 
     public RecordRowLayout(Context context) {
         super(context);
@@ -60,20 +64,21 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        // TODO 自動生成されたメソッド・スタブ
-
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        // TODO 自動生成されたメソッド・スタブ
-
     }
 
     @Override
     public void afterTextChanged(Editable s) {
-        // TODO 自動生成されたメソッド・スタブ
         calculateDifference();
+
+        CEditText cet = getFocusText();
+
+        if (null != cet) {
+            cet.save();
+        }
     }
 
     public void calculateDifference() {
@@ -105,4 +110,82 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
 
     }
 
+    /**
+     * プラス値を取得する
+     * 
+     * @param index
+     * @return CEditTextの設定値
+     */
+    public int getPlus(int index) {
+        int result = 0;
+        try {
+            result = Integer.parseInt(plus[index].getText().toString());
+        } catch (NumberFormatException e) {
+            result = 0;
+        }
+        return result;
+    }
+
+    /**
+     * マイナス値を取得する
+     * 
+     * @param index
+     * @return CEditTextの設定値
+     */
+    public int getMinus(int index) {
+        int result = 0;
+        try {
+            result = Integer.parseInt(minus[index].getText().toString());
+        } catch (NumberFormatException e) {
+            result = 0;
+        }
+        return result;
+    }
+
+    /**
+     * フォーカスがあるCEditTextを取得する
+     * 
+     * @return フォーカスがあたっているCEditText
+     */
+    public CEditText getFocusText() {
+
+        CEditText resultFocus = null;
+        boolean minusFocus;
+        boolean plusFocus;
+        
+        for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
+
+            plusFocus = plus[i].isFocused();
+            minusFocus = minus[i].isFocused();
+
+            if (plusFocus == true) {
+                resultFocus = plus[i];
+                return resultFocus;
+            } else if (minusFocus == true) {
+                resultFocus = minus[i];
+                return resultFocus;
+            } else {
+                resultFocus = null;
+            }
+        }
+        return resultFocus;
+    }
+
+    /**
+     * 対象ビューの配列位置を取得する
+     * 
+     * @param et
+     * @return 配列値を返却
+     */
+    public int getArrayIndex(CEditText et) {
+        int result = 0;
+        
+        for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
+            if (plus[i] == et || minus[i] == et) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
 }
