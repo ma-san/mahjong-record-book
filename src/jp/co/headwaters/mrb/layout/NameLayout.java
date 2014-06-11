@@ -31,4 +31,15 @@ public class NameLayout extends LinearLayout {
 		CTextView margin = new CTextView(getContext());
 		addView(margin, LayoutParamsUtil.createWidthWeightParams(1));
 	}
+	
+	/**
+	 * 入力内容をクリアする。
+	 */
+	public void clear() {
+		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
+			//playerName[i].getEditableText().clear();
+			playerName[i].setText("");
+			
+		}
+	}
 }
