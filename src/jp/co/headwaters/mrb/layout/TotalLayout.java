@@ -34,4 +34,41 @@ public class TotalLayout extends LinearLayout {
 		addView(point, LayoutParamsUtil.createWidthWeightParams(1));
 	}
 
+	/**
+	 * 得点合計を取得する。
+	 * インデックスの位置にある得点合計を返却する。
+	 *
+	 * @param index インデックス
+	 * @return 得点合計
+	 */
+	public int getPlayerTotal(int index) {
+
+		int result = 0;
+
+		try {
+			result = Integer.parseInt(playerTotal[index].getText().toString());
+		} catch (NumberFormatException e) {
+			result = 0;
+		}
+
+		return result;
+	}
+
+	/**
+	 * 得点合計を設定する。
+	 * インデックスの位置にある得点合計を設定する。
+	 *
+	 * @param index インデックス
+	 * @param value 得点合計
+	 */
+	public void setPlayerTotal(int index, int value) {
+
+		if(value >= 0) {
+			playerTotal[index].setTextColor(Color.BLACK);
+		}
+		else {
+			playerTotal[index].setTextColor(Color.RED);
+		}
+	}
+
 }
