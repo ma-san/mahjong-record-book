@@ -2,13 +2,15 @@ package jp.co.headwaters.mrb.constant;
 
 public interface Constant {
 	
-	/** ‘Î‰žl” */
+	/** ï¿½Î‰ï¿½ï¿½lï¿½ï¿½ */
 	int SUPPORT_NUMBER = 5; 
-	/** ƒvƒŒƒC‰ñ”‚ÌÅ‘å */
+	/** ï¿½vï¿½ï¿½ï¿½Cï¿½ñ”‚ÌÅ‘ï¿½ */
 	int PLAY_NUMBER_MAX = 10;
-	/** ƒXƒe[ƒ^ƒXƒo[‚Ì‚‚³Šî€ */
+	/** ï¿½Xï¿½eï¿½[ï¿½^ï¿½Xï¿½oï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½î€ */
 	int STATUS_BAR_HEIGTH = 25;
-	/** ƒŒƒCƒAƒEƒgs” */
+	/** ï¿½ï¿½ï¿½Cï¿½Aï¿½Eï¿½gï¿½sï¿½ï¿½ */
 	int LAYOUT_ROW_NUMBER = 8;
+	/** ç‚¹ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ */
+	int POINT_DEFAULT = 5;
 
 }
