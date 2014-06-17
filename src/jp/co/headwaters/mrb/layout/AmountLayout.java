@@ -24,8 +24,8 @@ public class AmountLayout extends LinearLayout implements TextWatcher{
 	public AmountLayout(Context context) {
 		super(context);
 		setLayout();
-        //	calculatedAmount();
-	}
+		setListener();
+    }
     
 	private void setLayout() {
 		CTextView amount = new CTextView(getContext());
@@ -50,16 +50,14 @@ public class AmountLayout extends LinearLayout implements TextWatcher{
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count,
                                   int after) {
-		calculatedAmount();
+		calculateAmount();
         
 		
 	}
     
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
-		calculatedAmount();
-        
-    }
+	}
 	
 	/**
 	 *リスナを登録する
@@ -68,31 +66,47 @@ public class AmountLayout extends LinearLayout implements TextWatcher{
 		point.addTextChangedListener(this);
 	}
 	
+	
+	/**
+	 * 額基数
+	 */
+	private static int AMOUNT_BASIS = 10;
+    
+	/**
+	 * 額フォーマット
+	 */
+	private static DecimalFormat AMOUNT_FORMAT = new DecimalFormat("#,###");
+    
+	
 	/**
 	 * 額を算出
 	 */
-	private void calculatedAmount() {
+	private void calculateAmount() {
+        
 		TotalLayout totalLayout = ((MainActivity)getContext()).getTotalLayout();
 		
-		int index = 0;
-		for(int i=0; i < Constant.SUPPORT_NUMBER; i++){
-			index = Integer.parseInt(point.getText().toString())*10;
+		int pointAmount = 0;
+		
+		try {
+			
+			pointAmount = Integer.parseInt(point.getText().toString())*AMOUNT_BASIS;
+		}
+		catch (NumberFormatException e) {
+			pointAmount = 0;
 		}
 		
-		int amount = (totalLayout.getPlayerTotal(0) * index);
-        
-		DecimalFormat formatter = new DecimalFormat("#,###");
-		String result = formatter.format(amount);
-		
-		playerAmount[index].setText(result);
-		
-        if(amount >= 0) {
-            playerAmount[index].setTextColor(Color.BLACK);
-        }
-        else {
-            playerAmount[index].setTextColor(Color.RED);
-        }
-		
+		for (int i=0; i<Constant.SUPPORT_NUMBER; i++) {
+			int amount =  (totalLayout.getPlayerTotal(i)*pointAmount);
+			playerAmount[i].setText(AMOUNT_FORMAT.format(amount));
+            
+			if (0 <= amount) {
+				playerAmount[i].setTextColor(Color.BLACK);
+			}
+			else {
+				playerAmount[i].setTextColor(Color.RED);
+			}
+		}
 	}
-    
 }
+
+
