@@ -1,5 +1,6 @@
 ﻿package jp.co.headwaters.mrb.layout;
 
+import jp.co.headwaters.mrb.activity.MainActivity;
 import jp.co.headwaters.mrb.constant.Constant;
 import jp.co.headwaters.mrb.util.LayoutParamsUtil;
 import jp.co.headwaters.mrb.view.CEditText;
@@ -16,10 +17,9 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
     private CEditText[] plus;
     private CEditText[] minus;
     private CTextView difference;
-    
 
-//    private int result = 0;
-//    private int position = 0;
+    // private int result = 0;
+    // private int position = 0;
 
     public RecordRowLayout(Context context) {
         super(context);
@@ -78,6 +78,9 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
 
         if (null != cet) {
             cet.save();
+            RecordLayout recordLayout = ((MainActivity) getContext()).getRecordLayout();
+            int result = getArrayIndex(cet);
+            recordLayout.onChangeRecord(result);
         }
     }
 
@@ -152,7 +155,7 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         CEditText resultFocus = null;
         boolean minusFocus;
         boolean plusFocus;
-        
+
         for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
 
             plusFocus = plus[i].isFocused();
@@ -179,7 +182,7 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
      */
     public int getArrayIndex(CEditText et) {
         int result = 0;
-        
+
         for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
             if (plus[i] == et || minus[i] == et) {
                 result = i;

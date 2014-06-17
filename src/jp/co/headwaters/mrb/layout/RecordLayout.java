@@ -43,4 +43,24 @@ public class RecordLayout extends ScrollView {
 		}
 	}
 	
+	/**
+	 * 取得した値の合計を返却する
+	 * @param index
+	 * @return 合計した値
+	 */
+	private int recordTotalCalculation(int index){
+
+	    RecordRowLayout record = new RecordRowLayout(getContext());
+	    int recordPlus = record.getPlus(index);
+	    int recordMinus = record.getMinus(index);
+
+	    int totalCalculation = recordPlus + (-recordMinus);
+	    
+	    return totalCalculation;
+	}
+	
+	public void onChangeRecord(int index){
+	    
+	}
+	
 }
