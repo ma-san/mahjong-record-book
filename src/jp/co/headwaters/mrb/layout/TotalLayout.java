@@ -8,25 +8,36 @@ import android.content.Context;
 import android.graphics.Color;
 import android.widget.LinearLayout;
 
+/**
+ * 合計を管理するレイアウトクラス。
+ */
 public class TotalLayout extends LinearLayout {
     
-	/** 得点合計 */
+	/** プレイヤー合計 */
 	private CTextView[] playerTotal;
     
+	/**
+	 * コンストラクタ
+	 * 
+	 * @param context コンテキスト
+	 */
 	public TotalLayout(Context context) {
 		super(context);
 		setLayout();
 	}
     
+	/**
+	 * レイアウトを設定する。
+	 */
 	private void setLayout() {
 		CTextView total = new CTextView(getContext());
 		total.setText(R.string.total);
 		addView(total, LayoutParamsUtil.createWidthWeightParams(1));
         
 		playerTotal = new CTextView[Constant.SUPPORT_NUMBER];
-		for (CTextView tv: playerTotal) {
-			tv = new CTextView(getContext());
-			addView(tv, LayoutParamsUtil.createWidthWeightParams(2));
+		for (int i = 0; i < playerTotal.length; i++) {
+			playerTotal[i] = new CTextView(getContext());
+			addView(playerTotal[i], LayoutParamsUtil.createWidthWeightParams(2));
 		}
         
 		CTextView point = new CTextView(getContext());
@@ -35,11 +46,10 @@ public class TotalLayout extends LinearLayout {
 	}
     
 	/**
-	 * 得点合計を取得する。
-	 * インデックスの位置にある得点合計を返却する。
+	 * プレイヤー合計を設定する。
 	 *
 	 * @param index インデックス
-	 * @return 得点合計
+	 * @return プレイヤー合計
 	 */
 	public int getPlayerTotal(int index) {
         
@@ -55,11 +65,10 @@ public class TotalLayout extends LinearLayout {
 	}
     
 	/**
-	 * 得点合計を設定する。
-	 * インデックスの位置にある得点合計を設定する。
+	 * プレイヤー合計を取得する。
 	 *
 	 * @param index インデックス
-	 * @param value 得点合計
+	 * @param value 設定値
 	 */
 	public void setPlayerTotal(int index, int value) {
 		

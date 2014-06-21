@@ -8,24 +8,36 @@ import jp.co.headwaters.mrb.view.CTextView;
 import android.content.Context;
 import android.widget.LinearLayout;
 
+/**
+ * 名前を管理するレイアウトクラス。
+ */
 public class NameLayout extends LinearLayout {
 
+	/** プレイヤー名 */
 	private CEditText[] playerName;
 
+	/**
+	 * コンストラクタ
+	 * 
+	 * @param context コンテキスト
+	 */
 	public NameLayout(Context context) {
 		super(context);
 		setLayout();
 	}
 
+	/**
+	 * レイアウトを設定する。
+	 */
 	private void setLayout() {
 		CTextView nameLabel = new CTextView(getContext());
 		nameLabel.setText(R.string.player_name);
 		addView(nameLabel, LayoutParamsUtil.createWidthWeightParams(1));
 
 		playerName = new CEditText[Constant.SUPPORT_NUMBER];
-		for (CEditText et: playerName) {
-			et = new CEditText(getContext());
-			addView(et, LayoutParamsUtil.createWidthWeightParams(2));
+		for (int i = 0; i < playerName.length; i++) {
+			playerName[i] = new CEditText(getContext());
+			addView(playerName[i], LayoutParamsUtil.createWidthWeightParams(2));
 		}
 		
 		CTextView margin = new CTextView(getContext());

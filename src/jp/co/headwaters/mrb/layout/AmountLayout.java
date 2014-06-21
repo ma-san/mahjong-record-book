@@ -14,28 +14,40 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
+/**
+ * 額を管理するレイアウトクラス。
+ */
 public class AmountLayout extends LinearLayout implements TextWatcher{
     
+	/** 額 */
 	private CTextView[] playerAmount;
+	/** 点 */
 	private CEditText point;
     
+	/**
+	 * コンストラクタ
+	 * 
+	 * @param context コンテキスト
+	 */
 	public AmountLayout(Context context) {
 		super(context);
 		setLayout();
 		setListener();
     }
     
+	/**
+	 * レイアウトを設定する。
+	 */
 	private void setLayout() {
 		CTextView amount = new CTextView(getContext());
 		amount.setText(R.string.amount);
 		addView(amount, LayoutParamsUtil.createWidthWeightParams(1));
         
 		playerAmount = new CTextView[Constant.SUPPORT_NUMBER];
-		for (TextView tv: playerAmount) {
-			tv = new CTextView(getContext());
-			addView(tv, LayoutParamsUtil.createWidthWeightParams(2));
+		for (int i = 1; i < playerAmount.length; i++) {
+			playerAmount[i] = new CTextView(getContext());
+			addView(playerAmount[i], LayoutParamsUtil.createWidthWeightParams(2));
 		}
 		
 		point = new CEditText(getContext());
@@ -60,7 +72,7 @@ public class AmountLayout extends LinearLayout implements TextWatcher{
 	}
 	
 	/**
-	 *リスナを登録する
+	 * リスナーを設定する。
 	 */
 	private void setListener() {
 		point.addTextChangedListener(this);
@@ -79,7 +91,7 @@ public class AmountLayout extends LinearLayout implements TextWatcher{
     
 	
 	/**
-	 * 額を算出
+	 * 額を算出する。
 	 */
 	private void calculateAmount() {
         
