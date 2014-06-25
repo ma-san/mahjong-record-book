@@ -48,7 +48,7 @@ public class RecordLayout extends ScrollView {
 	 * @param index
 	 * @return 合計した値
 	 */
-	private int recordTotalCalculation(int index){
+	private int calculateTotal(int index){
 
 	    RecordRowLayout record = new RecordRowLayout(getContext());
 	    int recordPlus = record.getPlus(index);
@@ -58,9 +58,11 @@ public class RecordLayout extends ScrollView {
 	    
 	    return totalCalculation;
 	}
-	
+
 	public void onChangeRecord(int index){
-	    
+		int result = calculateTotal(index);
+		TotalLayout totalLayout = ((MainActivity)getContext()).getTotalLayout();
+		totalLayout.setPlayerTotal(index, result);
 	}
-	
+
 }
