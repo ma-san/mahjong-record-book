@@ -49,14 +49,11 @@ public class RecordLayout extends ScrollView {
 	 * @return 合計した値
 	 */
 	private int calculateTotal(int index){
-
-	    RecordRowLayout record = new RecordRowLayout(getContext());
-	    int recordPlus = record.getPlus(index);
-	    int recordMinus = record.getMinus(index);
-
-	    int totalCalculation = recordPlus + (-recordMinus);
-	    
-	    return totalCalculation;
+		int totalCalculation = 0;
+		for (RecordRowLayout record : recordRowLayout) {
+			totalCalculation += (record.getPlus(index) - record.getMinus(index));
+		}
+		return totalCalculation;
 	}
 
 	public void onChangeRecord(int index){
