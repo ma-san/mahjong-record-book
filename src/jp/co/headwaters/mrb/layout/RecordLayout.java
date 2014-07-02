@@ -35,8 +35,7 @@ public class RecordLayout extends ScrollView {
 		recordRowLayout = new RecordRowLayout[Constant.PLAY_NUMBER_MAX];
 		
 		for (int i = 0; i < recordRowLayout.length; i++) {
-			recordRowLayout[i] = new RecordRowLayout(getContext());
-			recordRowLayout[i].setPlayNumber(String.valueOf(i + 1));
+			recordRowLayout[i] = new RecordRowLayout(getContext(), String.valueOf(i + 1));
 			mainLayout.addView(
 					recordRowLayout[i],
 					new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, rowHeigth));
