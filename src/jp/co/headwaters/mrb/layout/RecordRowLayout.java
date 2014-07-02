@@ -13,7 +13,7 @@ import android.widget.LinearLayout;
 
 public class RecordRowLayout extends LinearLayout implements TextWatcher {
 
-    private CTextView playNumber;
+    private int playNumber;
     private CEditText[] plus;
     private CEditText[] minus;
     private CTextView difference;
@@ -21,8 +21,9 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
     // private int result = 0;
     // private int position = 0;
 
-    public RecordRowLayout(Context context) {
+    public RecordRowLayout(Context context, int playNumber) {
         super(context);
+        this.playNumber = playNumber;
         setLayout();
         setListener();
     }
@@ -32,7 +33,8 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         mainLayout.setOrientation(LinearLayout.VERTICAL);
         addView(mainLayout);
 
-        playNumber = new CTextView(getContext());
+        CTextView playNumber = new CTextView(getContext());
+        playNumber.setText(String.valueOf(playNumber))
         addView(playNumber, LayoutParamsUtil.createWidthWeightParams(1));
 
         plus = new CEditText[Constant.SUPPORT_NUMBER];
@@ -49,10 +51,6 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
 
         difference = new CTextView(getContext());
         addView(difference, LayoutParamsUtil.createWidthWeightParams(1));
-    }
-
-    public void setPlayNumber(String playNumber) {
-        this.playNumber.setText(playNumber);
     }
 
     private void setListener() {
