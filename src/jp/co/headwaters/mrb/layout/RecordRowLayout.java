@@ -34,7 +34,7 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         addView(mainLayout);
 
         CTextView playNumber = new CTextView(getContext());
-        playNumber.setText(String.valueOf(playNumber))
+        playNumber.setText(String.valueOf(playNumber));
         addView(playNumber, LayoutParamsUtil.createWidthWeightParams(1));
 
         plus = new CEditText[Constant.SUPPORT_NUMBER];

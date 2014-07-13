@@ -1,5 +1,6 @@
 package jp.co.headwaters.mrb.layout;
 
+import jp.co.headwaters.mrb.activity.MainActivity;
 import jp.co.headwaters.mrb.constant.Constant;
 import android.app.Activity;
 import android.content.Context;
@@ -24,7 +25,7 @@ public class RecordLayout extends ScrollView {
 		DisplayMetrics displaymetrics = new DisplayMetrics();
 		((Activity)getContext()).getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
 
-		// TODO �X�e�[�^�X�o�[������onWindow�O�ɂƂ肽��
+		// TODO �ｽX�ｽe�ｽ[�ｽ^�ｽX�ｽo�ｽ[�ｽ�ｽ�ｽ�ｽ�ｽ�ｽonWindow�ｽO�ｽﾉとりた�ｽ�ｽ
 //		Rect rect = new Rect();
 //		Window window = ((Activity)getContext()).getWindow();
 //		window.getDecorView().getWindowVisibleDisplayFrame(rect);
@@ -35,7 +36,7 @@ public class RecordLayout extends ScrollView {
 		recordRowLayout = new RecordRowLayout[Constant.PLAY_NUMBER_MAX];
 		
 		for (int i = 0; i < recordRowLayout.length; i++) {
-			recordRowLayout[i] = new RecordRowLayout(getContext(), String.valueOf(i + 1));
+			recordRowLayout[i] = new RecordRowLayout(getContext(), i + 1);
 			mainLayout.addView(
 					recordRowLayout[i],
 					new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, rowHeigth));
@@ -43,9 +44,9 @@ public class RecordLayout extends ScrollView {
 	}
 	
 	/**
-	 * 取得した値の合計を返却する
+	 * 蜿門ｾ励＠縺溷�､縺ｮ蜷郁ｨ医ｒ霑泌唆縺吶ｋ
 	 * @param index
-	 * @return 合計した値
+	 * @return 蜷郁ｨ医＠縺溷�､
 	 */
 	private int calculateTotal(int index){
 		int totalCalculation = 0;
