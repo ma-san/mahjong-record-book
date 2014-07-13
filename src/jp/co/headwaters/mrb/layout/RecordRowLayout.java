@@ -18,17 +18,32 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
     private CEditText[] minus;
     private CTextView difference;
 
-    // private int result = 0;
-    // private int position = 0;
+    /**
+     * コンストラクタ
+     * 
+     * @param context コンテキスト
+     */
+    public RecordRowLayout(Context context) {
+        this(context, 0);
+    }
 
+    /**
+     * コンストラクタ
+     * 
+     * @param context コンテキスト
+     * @param playNumber プレイ回数
+     */
     public RecordRowLayout(Context context, int playNumber) {
         super(context);
         this.playNumber = playNumber;
         setLayout();
-        setListener();
         load();
+        setListener();
     }
 
+    /**
+     * レイアウトを設定します。
+     */
     private void setLayout() {
         LinearLayout mainLayout = new LinearLayout(getContext());
         mainLayout.setOrientation(LinearLayout.VERTICAL);
@@ -56,6 +71,9 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         addView(difference, LayoutParamsUtil.createWidthWeightParams(1));
     }
 
+    /**
+     * リスナを設定します。
+     */
     private void setListener() {
         for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
             plus[i].addTextChangedListener(this);
@@ -111,7 +129,6 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         }
 
         difference.setText(String.valueOf(answer));
-
     }
 
     /**
@@ -193,10 +210,34 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         return result;
     }
 
+    /**
+     * 設定値を読み込む。
+     */
+    public void save() {
+        for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
+            plus[i].save();
+            minus[i].save();
+        }
+    }
+    
+    /**
+     * 設定値を読み込む。
+     */
     public void load() {
         for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
             plus[i].load();
             minus[i].load();
         }
     }
+    
+	/**
+	 * 入力内容をクリアする。
+	 */
+	public void clear() {
+		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++) {
+			plus[i].setText("");
+            minus[i].setText("");
+		}
+	}
+
 }

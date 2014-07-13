@@ -8,24 +8,26 @@ import jp.co.headwaters.mrb.layout.SymbolLayout;
 import jp.co.headwaters.mrb.layout.TotalLayout;
 import jp.co.headwaters.mrb.util.LayoutParamsUtil;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
 
-	/** 名前レイアウト */
+	/** 蜷榊燕繝ｬ繧､繧｢繧ｦ繝� */
 	private NameLayout nameLayout;
-	/** 記録レイアウト */
+	/** 險倬鹸繝ｬ繧､繧｢繧ｦ繝� */
 	private RecordLayout recordLayout;
-	/** 合計レイアウト */
+	/** 蜷郁ｨ医Ξ繧､繧｢繧ｦ繝� */
 	private TotalLayout totalLayout;
-	/** 額レイアウト */
+	/** 鬘阪Ξ繧､繧｢繧ｦ繝� */
 	private AmountLayout amountLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setLayout();
+		calculate();
 	}
 
 	private void setLayout() {
@@ -53,39 +55,46 @@ public class MainActivity extends Activity {
 	}
 
 	/**
-	 * 名前レイアウトを取得する。
+	 * 蜷榊燕繝ｬ繧､繧｢繧ｦ繝医ｒ蜿門ｾ励☆繧九��
 	 * 
-	 * @return 名前レイアウト
+	 * @return 蜷榊燕繝ｬ繧､繧｢繧ｦ繝�
 	 */
 	public NameLayout getNameLayout() {
 		return nameLayout;
 	}
 	
 	/**
-	 * 記録レイアウトを取得する。
+	 * 險倬鹸繝ｬ繧､繧｢繧ｦ繝医ｒ蜿門ｾ励☆繧九��
 	 * 
-	 * @return 記録レイアウト
+	 * @return 險倬鹸繝ｬ繧､繧｢繧ｦ繝�
 	 */
 	public RecordLayout getRecordLayout() {
 		return recordLayout;
 	}
 	
 	/**
-	 * 合計レイアウトを取得する。
+	 * 蜷郁ｨ医Ξ繧､繧｢繧ｦ繝医ｒ蜿門ｾ励☆繧九��
 	 * 
-	 * @return 合計レイアウト
+	 * @return 蜷郁ｨ医Ξ繧､繧｢繧ｦ繝�
 	 */
 	public TotalLayout getTotalLayout() {
 		return totalLayout;
 	}
 
 	/**
-	 * 額レイアウトを取得する。
+	 * 鬘阪Ξ繧､繧｢繧ｦ繝医ｒ蜿門ｾ励☆繧九��
 	 * 
-	 * @return 額レイアウト
+	 * @return 鬘阪Ξ繧､繧｢繧ｦ繝�
 	 */
 	public AmountLayout getAmountLayout() {
 		return amountLayout;
+	}
+	
+	/**
+	 * 算出
+	 */
+	private void calculate() {
+		recordLayout.calculate();
 	}
 
 }

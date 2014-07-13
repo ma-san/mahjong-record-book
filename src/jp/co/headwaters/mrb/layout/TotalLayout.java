@@ -72,9 +72,7 @@ public class TotalLayout extends LinearLayout {
 	 */
 	public void setPlayerTotal(int index, int value) {
 		
-		
 		playerTotal[index].setText(Integer.toString(value));
-        
         
 		if(value >= 0) {
 			playerTotal[index].setTextColor(Color.BLACK);

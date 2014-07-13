@@ -14,20 +14,21 @@ public class CEditText extends EditText {
     private Editor prefsPrivateEditor;
 
     /**
-     * sharedPreferencesの取得
+     * sharedPreferences縺ｮ蜿門ｾ�
      * @param context
      */
     public CEditText(Context context) {
         super(context);
         setBackgroundResource(R.drawable.bg_exit_text);
         setGravity(Gravity.CENTER);
+		setTextSize(16);
 
         sharedPreferences = context.getSharedPreferences("preferencesName", Context.MODE_PRIVATE);
         prefsPrivateEditor = sharedPreferences.edit();
     }
 
     /**
-     * Preferencesのキー文字列を設定する
+     * Preferences縺ｮ繧ｭ繝ｼ譁�ｭ怜�繧定ｨｭ螳壹☆繧�
      * 
      * @param key
      */
@@ -36,7 +37,7 @@ public class CEditText extends EditText {
     }
 
     /**
-     * 登録データを登録する
+     * 逋ｻ骭ｲ繝��繧ｿ繧堤匳骭ｲ縺吶ｋ
      */
     public void save() {
         if (preferenceskey != null) {
@@ -46,7 +47,7 @@ public class CEditText extends EditText {
     }
 
     /**
-     * 登録データを読み込む
+     * 逋ｻ骭ｲ繝��繧ｿ繧定ｪｭ縺ｿ霎ｼ繧�
      */
     public void load() {
         if (preferenceskey != null) {

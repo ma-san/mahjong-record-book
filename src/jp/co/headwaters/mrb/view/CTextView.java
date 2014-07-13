@@ -12,6 +12,7 @@ public class CTextView extends TextView {
 		setBackgroundResource(R.drawable.bg_text_view);
 		setGravity(Gravity.CENTER);
 		setTextColor(0xff4169e1);
+		setTextSize(16);
 	}
 
 }

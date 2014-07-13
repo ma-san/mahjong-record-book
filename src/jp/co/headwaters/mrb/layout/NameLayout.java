@@ -6,29 +6,32 @@ import jp.co.headwaters.mrb.util.LayoutParamsUtil;
 import jp.co.headwaters.mrb.view.CEditText;
 import jp.co.headwaters.mrb.view.CTextView;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.LinearLayout;
 
 /**
- * ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½éƒŒï¿½Cï¿½Aï¿½Eï¿½gï¿½Nï¿½ï¿½ï¿½Xï¿½B
+ * –¼‘O‚ğŠÇ—‚·‚éƒŒƒCƒAƒEƒgƒNƒ‰ƒXB
  */
-public class NameLayout extends LinearLayout {
+public class NameLayout extends LinearLayout implements TextWatcher {
 
-	/** ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ */
+	/** ƒvƒŒƒCƒ„[–¼ */
 	private CEditText[] playerName;
 
 	/**
-	 * ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
+	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 	 * 
-	 * @param context ï¿½Rï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½g
+	 * @param context ƒRƒ“ƒeƒLƒXƒg
 	 */
 	public NameLayout(Context context) {
 		super(context);
 		setLayout();
 		load();
+        setListener();
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Cï¿½Aï¿½Eï¿½gï¿½ï¿½İ’è‚·ï¿½ï¿½B
+	 * ƒŒƒCƒAƒEƒg‚ğİ’è‚·‚éB
 	 */
 	private void setLayout() {
 		CTextView nameLabel = new CTextView(getContext());
@@ -46,21 +49,61 @@ public class NameLayout extends LinearLayout {
 		addView(margin, LayoutParamsUtil.createWidthWeightParams(1));
 	}
 	
+    /**
+     * ƒŠƒXƒi‚ğİ’è‚µ‚Ü‚·B
+     */
+    private void setListener() {
+    	for (CEditText et: playerName) {
+    		et.addTextChangedListener(this);
+    	}
+    }
+	
 	/**
-	 * ï¿½ï¿½Í“ï¿½ï¿½eï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½B
+	 * “ü—Í“à—e‚ğƒNƒŠƒA‚·‚éB
 	 */
 	public void clear() {
-		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
-			//playerName[i].getEditableText().clear();
+		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++) {
 			playerName[i].setText("");
-			
 		}
 	}
 	
-	   public void load() {
-	        for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
-	            playerName[i].load();
-	        }
-	    }
+	/**
+	 * •Û‘¶’l‚ğŒÄ‚Ño‚·B
+	 */
+	public void load() {
+		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
+			playerName[i].load();
+		}
+	}
+	
+	@Override
+	public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+	}
+
+	@Override
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+	}
+
+	@Override
+	public void afterTextChanged(Editable s) {
+		CEditText et = getFocusText();
+		if (null != et) {
+			et.save();
+		}
+	}
+	
+    /**
+     * ƒtƒH[ƒJƒX‚ª‚ ‚éCEditText‚ğæ“¾‚·‚é
+     * 
+     * @return ƒtƒH[ƒJƒX‚ª‚ ‚½‚Á‚Ä‚¢‚éCEditText
+     */
+    public CEditText getFocusText() {
+    	for (CEditText et: playerName) {
+    		if (et.isFocused()) {
+    			return et;
+    		}
+    	}
+    	return null;
+    }
 
 }

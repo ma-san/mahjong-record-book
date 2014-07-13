@@ -11,6 +11,6 @@
 	<string name="minus">ー</string>
     <string name="point">点</string>
 	<string name="record_clear">点数を初期化</string>
-    <string name="all_clear">すべて初期化</string>
+    <string name="all_clear">すべて初期化</string>    
     
 </resources>
