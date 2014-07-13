@@ -9,25 +9,26 @@ import android.content.Context;
 import android.widget.LinearLayout;
 
 /**
- * –¼‘O‚ğŠÇ—‚·‚éƒŒƒCƒAƒEƒgƒNƒ‰ƒXB
+ * ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½éƒŒï¿½Cï¿½Aï¿½Eï¿½gï¿½Nï¿½ï¿½ï¿½Xï¿½B
  */
 public class NameLayout extends LinearLayout {
 
-	/** ƒvƒŒƒCƒ„[–¼ */
+	/** ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ */
 	private CEditText[] playerName;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	 * 
-	 * @param context ƒRƒ“ƒeƒLƒXƒg
+	 * @param context ï¿½Rï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½g
 	 */
 	public NameLayout(Context context) {
 		super(context);
 		setLayout();
+		load();
 	}
 
 	/**
-	 * ƒŒƒCƒAƒEƒg‚ğİ’è‚·‚éB
+	 * ï¿½ï¿½ï¿½Cï¿½Aï¿½Eï¿½gï¿½ï¿½İ’è‚·ï¿½ï¿½B
 	 */
 	private void setLayout() {
 		CTextView nameLabel = new CTextView(getContext());
@@ -37,6 +38,7 @@ public class NameLayout extends LinearLayout {
 		playerName = new CEditText[Constant.SUPPORT_NUMBER];
 		for (int i = 0; i < playerName.length; i++) {
 			playerName[i] = new CEditText(getContext());
+			playerName[i].setKey("playerName_" + i);
 			addView(playerName[i], LayoutParamsUtil.createWidthWeightParams(2));
 		}
 		
@@ -45,7 +47,7 @@ public class NameLayout extends LinearLayout {
 	}
 	
 	/**
-	 * “ü—Í“à—e‚ğƒNƒŠƒA‚·‚éB
+	 * ï¿½ï¿½Í“ï¿½ï¿½eï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½B
 	 */
 	public void clear() {
 		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
@@ -54,4 +56,11 @@ public class NameLayout extends LinearLayout {
 			
 		}
 	}
+	
+	   public void load() {
+	        for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
+	            playerName[i].load();
+	        }
+	    }
+
 }

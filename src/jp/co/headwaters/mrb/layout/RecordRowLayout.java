@@ -26,6 +26,7 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         this.playNumber = playNumber;
         setLayout();
         setListener();
+        load();
     }
 
     private void setLayout() {
@@ -34,7 +35,7 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         addView(mainLayout);
 
         CTextView playNumber = new CTextView(getContext());
-        playNumber.setText(String.valueOf(playNumber));
+        playNumber.setText(String.valueOf(this.playNumber));
         addView(playNumber, LayoutParamsUtil.createWidthWeightParams(1));
 
         plus = new CEditText[Constant.SUPPORT_NUMBER];
@@ -42,10 +43,12 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
             plus[i] = new CEditText(getContext());
             plus[i].setInputType(InputType.TYPE_CLASS_NUMBER);
+            plus[i].setKey(this.playNumber + "_plus_" + i);
             addView(plus[i], LayoutParamsUtil.createWidthWeightParams(1));
 
             minus[i] = new CEditText(getContext());
             minus[i].setInputType(InputType.TYPE_CLASS_NUMBER);
+            minus[i].setKey(this.playNumber + "_minus_" + i);
             addView(minus[i], LayoutParamsUtil.createWidthWeightParams(1));
         }
 
@@ -188,5 +191,12 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
             }
         }
         return result;
+    }
+
+    public void load() {
+        for (int i = 0; i < Constant.SUPPORT_NUMBER; i++) {
+            plus[i].load();
+            minus[i].load();
+        }
     }
 }
