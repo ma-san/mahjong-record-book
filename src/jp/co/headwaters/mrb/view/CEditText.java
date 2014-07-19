@@ -14,8 +14,9 @@ public class CEditText extends EditText {
     private Editor prefsPrivateEditor;
 
     /**
-     * sharedPreferences縺ｮ蜿門ｾ�
-     * @param context
+     * コンストラクタ
+     * 
+     * @param context コンテキスト
      */
     public CEditText(Context context) {
         super(context);
@@ -28,16 +29,16 @@ public class CEditText extends EditText {
     }
 
     /**
-     * Preferences縺ｮ繧ｭ繝ｼ譁�ｭ怜�繧定ｨｭ螳壹☆繧�
+     * 保存キーを設定する。
      * 
-     * @param key
+     * @param key 保存キー
      */
     public void setKey(String key) {
         this.preferenceskey = key;
     }
 
     /**
-     * 逋ｻ骭ｲ繝��繧ｿ繧堤匳骭ｲ縺吶ｋ
+     * 設定値を保存します。
      */
     public void save() {
         if (preferenceskey != null) {
@@ -47,7 +48,7 @@ public class CEditText extends EditText {
     }
 
     /**
-     * 逋ｻ骭ｲ繝��繧ｿ繧定ｪｭ縺ｿ霎ｼ繧�
+     * 保存値を読み込みます。
      */
     public void load() {
         if (preferenceskey != null) {

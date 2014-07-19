@@ -17,13 +17,13 @@ public class AlertDialogUtil extends AlertDialog.Builder {
 	}
 	
 	public void showWantToInit(DialogInterface.OnClickListener yes) {
-		showYesNoDialog("‰Šú‰»‚µ‚Ü‚·‚©H", yes, NO_ACTION_LISTENER);	
+		showYesNoDialog("ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½H", yes, NO_ACTION_LISTENER);	
 	}
 		
 	public void showYesNoDialog(String message, DialogInterface.OnClickListener yes, DialogInterface.OnClickListener no) {
 		setMessage(message);
-		setPositiveButton("‚Í‚¢", yes);
-		setNegativeButton("‚¢‚¢‚¦", no);
+		setPositiveButton("ã¯ã„", yes);
+		setNegativeButton("ã„ã„ãˆ", no);
 		create();
 		show();
 	}
