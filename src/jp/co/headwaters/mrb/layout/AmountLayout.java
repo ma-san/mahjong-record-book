@@ -123,5 +123,9 @@ public class AmountLayout extends LinearLayout implements TextWatcher{
 	public void clear() {
 		point.setText("5");
 	}
+	
+	public void save() {
+        point.save();
+    }
 
 }

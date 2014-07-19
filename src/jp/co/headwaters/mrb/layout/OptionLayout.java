@@ -11,58 +11,83 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class OptionLayout extends LinearLayout {
-	
-	private AlertDialogUtil alertDialogUtil;
-	private CTextView recordClear;
-	private CTextView allClear;
 
-	public OptionLayout(Context context) {
-		super(context);
-		alertDialogUtil = new AlertDialogUtil(context);
-		setLayout();
-		setListener();
-	}
+    private AlertDialogUtil alertDialogUtil;
+    private CTextView recordClear;
+    private CTextView allClear;
 
-	private void setLayout() {
-		recordClear = new CTextView(getContext());
-		recordClear.setBackgroundResource(R.drawable.bg_exit_text);
-		recordClear.setText(R.string.record_clear);
-		addView(recordClear, LayoutParamsUtil.createWidthWeightParams(3)); 
-		
-		CTextView margin = new CTextView(getContext());
-		addView(margin, LayoutParamsUtil.createWidthWeightParams(6));
+    public OptionLayout(Context context) {
+        super(context);
+        alertDialogUtil = new AlertDialogUtil(context);
+        setLayout();
+        setListener();
+    }
 
-		allClear = new CTextView(getContext());
-		allClear.setBackgroundResource(R.drawable.bg_exit_text);
-		allClear.setText(R.string.all_clear);
-		addView(allClear, LayoutParamsUtil.createWidthWeightParams(3)); 
-	}
-	
-	/**
-	 * ÉäÉXÉiÅ[Çê›íËÇ∑ÇÈÅB
-	 */
-	private void setListener() {
-		recordClear.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				alertDialogUtil.showWantToInit(new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int whichButton) {
-						initRecord();
-					}
-				});
-			}
-		});
-	}
-	
-	/**
-	 * ì_èWÇèâä˙âªÇµÇ‹Ç∑ÅB
-	 */
-	private void initRecord() {
-		RecordLayout recordLayout = ((MainActivity)getContext()).getRecordLayout();
-		recordLayout.clear();
-		recordLayout.save();
-		recordLayout.calculate();
-	}
+    private void setLayout() {
+        recordClear = new CTextView(getContext());
+        recordClear.setBackgroundResource(R.drawable.bg_exit_text);
+        recordClear.setText(R.string.record_clear);
+        addView(recordClear, LayoutParamsUtil.createWidthWeightParams(3));
+
+        CTextView margin = new CTextView(getContext());
+        addView(margin, LayoutParamsUtil.createWidthWeightParams(6));
+
+        allClear = new CTextView(getContext());
+        allClear.setBackgroundResource(R.drawable.bg_exit_text);
+        allClear.setText(R.string.all_clear);
+        addView(allClear, LayoutParamsUtil.createWidthWeightParams(3));
+    }
+
+    /**
+     * ÔøΩÔøΩÔøΩXÔøΩiÔøΩ[ÔøΩÔøΩ›íËÇ∑ÔøΩÔøΩB
+     */
+    private void setListener() {
+        recordClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialogUtil.showWantToInit(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        initRecord();
+                    }
+                });
+            }
+        });
+
+        allClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialogUtil.showWantToInit(new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        initAll();
+                    }
+                });
+            }
+        });
+    }
+
+    private void initAll() {
+        NameLayout nameLayout = ((MainActivity) getContext()).getNameLayout();
+        nameLayout.clear();
+        nameLayout.save();
+        AmountLayout amountLayout = ((MainActivity) getContext()).getAmountLayout();
+        amountLayout.clear();
+        amountLayout.save();
+        initRecord();
+        
+    }
+    
+    /**
+     * ÔøΩ_ÔøΩWÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ‹ÇÔøΩÔøΩB
+     */
+    private void initRecord() {
+        RecordLayout recordLayout = ((MainActivity) getContext()).getRecordLayout();
+        recordLayout.clear();
+        recordLayout.save();
+        recordLayout.calculate();
+    }
+
+
 
 }
