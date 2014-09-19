@@ -11,17 +11,17 @@ import android.text.TextWatcher;
 import android.widget.LinearLayout;
 
 /**
- * ���O���Ǘ����郌�C�A�E�g�N���X�B
+ * 名前を表示するレイアウト
  */
 public class NameLayout extends LinearLayout implements TextWatcher {
 
-	/** �v���C���[�� */
+	/** 名前 */
 	private CEditText[] playerName;
 
 	/**
-	 * �R���X�g���N�^
+	 * コンストラクタ
 	 * 
-	 * @param context �R���e�L�X�g
+	 * @param context コンテキスト
 	 */
 	public NameLayout(Context context) {
 		super(context);
@@ -31,7 +31,7 @@ public class NameLayout extends LinearLayout implements TextWatcher {
 	}
 
 	/**
-	 * ���C�A�E�g��ݒ肷��B
+	 * レイアウトを設定する
 	 */
 	private void setLayout() {
 		CTextView nameLabel = new CTextView(getContext());
@@ -50,7 +50,7 @@ public class NameLayout extends LinearLayout implements TextWatcher {
 	}
 	
     /**
-     * ���X�i��ݒ肵�܂��B
+     * 
      */
     private void setListener() {
     	for (CEditText et: playerName) {
@@ -59,7 +59,7 @@ public class NameLayout extends LinearLayout implements TextWatcher {
     }
 	
 	/**
-	 * ��͓��e���N���A����B
+	 * 
 	 */
 	public void clear() {
 		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++) {
@@ -77,7 +77,6 @@ public class NameLayout extends LinearLayout implements TextWatcher {
     }
 	
 	/**
-	 * �ۑ��l���Ăяo���B
 	 */
 	public void load() {
 		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
@@ -102,9 +101,6 @@ public class NameLayout extends LinearLayout implements TextWatcher {
 	}
 	
     /**
-     * �t�H�[�J�X������CEditText���擾����
-     * 
-     * @return �t�H�[�J�X���������Ă���CEditText
      */
     public CEditText getFocusText() {
     	for (CEditText et: playerName) {

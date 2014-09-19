@@ -17,7 +17,7 @@ public class AlertDialogUtil extends AlertDialog.Builder {
 	}
 	
 	public void showWantToInit(DialogInterface.OnClickListener yes) {
-		showYesNoDialog("�����܂����H", yes, NO_ACTION_LISTENER);	
+		showYesNoDialog("初期化しますか？", yes, NO_ACTION_LISTENER);	
 	}
 		
 	public void showYesNoDialog(String message, DialogInterface.OnClickListener yes, DialogInterface.OnClickListener no) {

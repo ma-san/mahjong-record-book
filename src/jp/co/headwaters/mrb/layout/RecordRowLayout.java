@@ -1,5 +1,6 @@
 ﻿package jp.co.headwaters.mrb.layout;
 
+import jp.co.headwaters.mrb.R;
 import jp.co.headwaters.mrb.activity.MainActivity;
 import jp.co.headwaters.mrb.constant.Constant;
 import jp.co.headwaters.mrb.util.LayoutParamsUtil;
@@ -129,6 +130,11 @@ public class RecordRowLayout extends LinearLayout implements TextWatcher {
         }
 
         difference.setText(String.valueOf(answer));
+        if (0 == answer) {
+        	difference.setBackgroundResource(R.drawable.bg_text_view);        	
+        } else {
+        	difference.setBackgroundResource(R.drawable.bg_text_e_view);        	        	
+        }
     }
 
     /**

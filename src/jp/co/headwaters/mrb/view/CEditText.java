@@ -26,6 +26,7 @@ public class CEditText extends EditText {
 
         sharedPreferences = context.getSharedPreferences("preferencesName", Context.MODE_PRIVATE);
         prefsPrivateEditor = sharedPreferences.edit();
+        prefsPrivateEditor.commit();
     }
 
     /**
