@@ -11,17 +11,17 @@ import android.text.TextWatcher;
 import android.widget.LinearLayout;
 
 /**
- * –¼‘O‚ğŠÇ—‚·‚éƒŒƒCƒAƒEƒgƒNƒ‰ƒXB
+ * ï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½éƒŒï¿½Cï¿½Aï¿½Eï¿½gï¿½Nï¿½ï¿½ï¿½Xï¿½B
  */
 public class NameLayout extends LinearLayout implements TextWatcher {
 
-	/** ƒvƒŒƒCƒ„[–¼ */
+	/** ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ */
 	private CEditText[] playerName;
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	 * ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
 	 * 
-	 * @param context ƒRƒ“ƒeƒLƒXƒg
+	 * @param context ï¿½Rï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½g
 	 */
 	public NameLayout(Context context) {
 		super(context);
@@ -31,7 +31,7 @@ public class NameLayout extends LinearLayout implements TextWatcher {
 	}
 
 	/**
-	 * ƒŒƒCƒAƒEƒg‚ğİ’è‚·‚éB
+	 * ï¿½ï¿½ï¿½Cï¿½Aï¿½Eï¿½gï¿½ï¿½İ’è‚·ï¿½ï¿½B
 	 */
 	private void setLayout() {
 		CTextView nameLabel = new CTextView(getContext());
@@ -50,7 +50,7 @@ public class NameLayout extends LinearLayout implements TextWatcher {
 	}
 	
     /**
-     * ƒŠƒXƒi‚ğİ’è‚µ‚Ü‚·B
+     * ï¿½ï¿½ï¿½Xï¿½iï¿½ï¿½İ’è‚µï¿½Ü‚ï¿½ï¿½B
      */
     private void setListener() {
     	for (CEditText et: playerName) {
@@ -59,7 +59,7 @@ public class NameLayout extends LinearLayout implements TextWatcher {
     }
 	
 	/**
-	 * “ü—Í“à—e‚ğƒNƒŠƒA‚·‚éB
+	 * ï¿½ï¿½Í“ï¿½ï¿½eï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½B
 	 */
 	public void clear() {
 		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++) {
@@ -67,8 +67,17 @@ public class NameLayout extends LinearLayout implements TextWatcher {
 		}
 	}
 	
+    /**
+     * è¨­å®šå€¤ã‚’èª­ã¿è¾¼ã‚€ã€‚
+     */
+    public void save() {
+        for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++) {
+            playerName[i].save();
+        }
+    }
+	
 	/**
-	 * •Û‘¶’l‚ğŒÄ‚Ño‚·B
+	 * ï¿½Û‘ï¿½ï¿½lï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½B
 	 */
 	public void load() {
 		for(int i = 0; i < Constant.SUPPORT_NUMBER; i ++){
@@ -93,9 +102,9 @@ public class NameLayout extends LinearLayout implements TextWatcher {
 	}
 	
     /**
-     * ƒtƒH[ƒJƒX‚ª‚ ‚éCEditText‚ğæ“¾‚·‚é
+     * ï¿½tï¿½Hï¿½[ï¿½Jï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CEditTextï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
      * 
-     * @return ƒtƒH[ƒJƒX‚ª‚ ‚½‚Á‚Ä‚¢‚éCEditText
+     * @return ï¿½tï¿½Hï¿½[ï¿½Jï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½CEditText
      */
     public CEditText getFocusText() {
     	for (CEditText et: playerName) {
