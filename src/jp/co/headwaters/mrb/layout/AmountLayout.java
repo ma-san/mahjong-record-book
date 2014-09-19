@@ -115,6 +115,9 @@ public class AmountLayout extends LinearLayout implements TextWatcher{
 	 */
 	public void load() {
 		point.load();
+		if (0 == point.getText().length()) {
+			clear();
+		}
 	}
 
 	/**
